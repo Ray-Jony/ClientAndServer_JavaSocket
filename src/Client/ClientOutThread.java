@@ -1,11 +1,11 @@
-import java.net.FileNameMap;
+package Client;
 
 public class ClientOutThread extends Thread {
     private Client client;
 
     public ClientOutThread(Client client) {
         this.client = client;
-        System.out.println("ClientOutThread Created");
+        System.out.println("Client.ClientOutThread Created");
         start();
     }
 

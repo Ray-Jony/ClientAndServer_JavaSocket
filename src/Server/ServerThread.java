@@ -1,9 +1,12 @@
+package Server;
+
+import Database.DBHelper;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Iterator;
 
 public class ServerThread extends Thread {
     private Server server;

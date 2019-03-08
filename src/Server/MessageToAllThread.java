@@ -1,7 +1,8 @@
+package Server;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Collection;
 
 /**
  * @author :
@@ -14,7 +15,7 @@ public class MessageToAllThread extends Thread {
     public MessageToAllThread(ServerThread serverThread, String message) {
         this.message = message;
         this.serverThread = serverThread;
-        System.out.println("MessageToAllThread - get: " + message);
+        System.out.println("Server.MessageToAllThread - get: " + message);
         start();
     }
 
@@ -25,7 +26,7 @@ public class MessageToAllThread extends Thread {
         try {
             for (Socket s :
                     serverThread.getServer().getClients().values()) {
-//                System.out.println("MessageToAllThread - Clients list" + s);
+//                System.out.println("Server.MessageToAllThread - Clients list" + s);
                 new PrintWriter(s.getOutputStream(),true).println(message);
             }
 

@@ -1,6 +1,6 @@
+package Client;
 
 import java.io.IOException;
-import java.sql.SQLOutput;
 
 
 public class ClientInThread extends Thread {
@@ -8,7 +8,7 @@ public class ClientInThread extends Thread {
 
     public ClientInThread(Client client) {
         this.client = client;
-        System.out.println("ClientInThread Created");
+        System.out.println("Client.ClientInThread Created");
         start();
     }
 

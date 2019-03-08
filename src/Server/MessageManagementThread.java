@@ -1,5 +1,5 @@
+package Server;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -29,8 +29,8 @@ public class MessageManagementThread extends Thread {
         try {
             String message = in.readLine();
             System.out.println(message);
-//            out.println("send over MessageManagementThread" + message);
-//            new PrintWriter(serverThread.getSocket().getOutputStream(), true).println("send over MessageManagementThread" + message);
+//            out.println("send over Server.MessageManagementThread" + message);
+//            new PrintWriter(serverThread.getSocket().getOutputStream(), true).println("send over Server.MessageManagementThread" + message);
             while (message != null) {
                 if (message.charAt(0) == '0') {
                     new MessageToAllThread(serverThread, message);

@@ -1,3 +1,5 @@
+package Client;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,7 +15,6 @@ public class Client {
 
     private int flag;//if flag == 0 perform sendToUser else sendToGroup;
     private String user;
-    private String message;
     private Scanner scanner;
     private Socket socket;
     private BufferedReader in;
@@ -66,24 +67,7 @@ public class Client {
             String username = clientUI.getUserText().getText();
             String password = clientUI.getPasswordText().getText();
             String loginInfo = username + "@" + password;
-//
-//            out.println(loginInfo);
-//
-//            try {
-//                String permission = in.readLine();
-//                if (permission.equals("1")) {
-//                    clientUI.successfulLogin();
-//                    this.user = username;
-//                    this.login = true;
-//                    clientUI.getFrame().dispose();
-//
-//                } else {
-//                    clientUI.loginFailed();
-//                }
-//            } catch (IOException e1) {
-//                System.out.println(e1.getMessage());
-//                e1.printStackTrace();
-//            }
+
             new ClientLoginThread(this, loginInfo);
 
         });

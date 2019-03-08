@@ -1,3 +1,5 @@
+package Server;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -13,7 +15,7 @@ public class Server {
     public Server(int port) throws IOException {
         this.port = port;
         ss = new ServerSocket(port);
-        System.out.println("Server established");
+        System.out.println("Server.Server established");
     }
 
     public void start() throws IOException{

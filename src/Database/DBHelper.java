@@ -1,4 +1,4 @@
-
+package Database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -80,7 +80,7 @@ public class DBHelper {
 				}
 				resultSet = preparedStatement.executeQuery();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
 				e.printStackTrace();
 			}
 			
