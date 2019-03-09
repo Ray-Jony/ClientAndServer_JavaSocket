@@ -15,7 +15,7 @@ public class Server {
     public Server(int port) throws IOException {
         this.port = port;
         ss = new ServerSocket(port);
-        System.out.println("Server.Server established");
+        System.out.println("Server established");
     }
 
     public void start() throws IOException{

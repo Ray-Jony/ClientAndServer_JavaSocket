@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -26,14 +27,14 @@ public class Client {
 
 
     public Client(String host, int port) throws IOException {
-
+        this.onlineUserList = new ArrayList<>();
         this.login = false;
-        clientUI = new ClientUI();
+        this.clientUI = new ClientUI();
 
-        socket = new Socket(host, port);
-        scanner = new Scanner(System.in);
-        in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        out = new PrintWriter(socket.getOutputStream(), true);
+        this.socket = new Socket(host, port);
+        this.scanner = new Scanner(System.in);
+        this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        this.out = new PrintWriter(socket.getOutputStream(), true);
 
     }
 
@@ -87,6 +88,9 @@ public class Client {
         out.println("2" + group + "@" + message);
     }
 
+    public void sendHearBeats(){
+        out.println("9");
+    }
 
     public Scanner getScanner() {
         return scanner;
@@ -106,6 +110,10 @@ public class Client {
 
     public List<String> getOnlineUserList() {
         return onlineUserList;
+    }
+
+    public void setOnlineUserList(List<String> onlineUserList) {
+        this.onlineUserList = onlineUserList;
     }
 
     public boolean isServerActive() {

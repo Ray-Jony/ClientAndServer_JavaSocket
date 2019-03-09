@@ -14,7 +14,7 @@ public class ClientOutThread extends Thread {
 
         while (true) {
             System.out.println("Please chose what kind of message you want to send");
-            System.out.printf("1.send to all %n2.send to someone%n3.send to a group%n");
+            System.out.printf("1.send to all %n2.send to someone%n3.send to a group%n4.view online user list");
             String in = client.getScanner().nextLine();
             if (in.equals("1")) {
                 System.out.println("Type in the message you want to send to All:");
@@ -22,7 +22,7 @@ public class ClientOutThread extends Thread {
                 client.sendToAll(message);
             } else if (in.equals("2")) {
                 System.out.println("who do you want to send to?");
-//                System.out.println(client.getOnlineUserList());
+                System.out.println(client.getOnlineUserList());
                 String targetUser = client.getScanner().nextLine();
                 if (true) {//TODO 添加判断 targetUser是否在列表中。
                     System.out.println("Type in the message you want to send to " + targetUser + ":");
@@ -31,7 +31,11 @@ public class ClientOutThread extends Thread {
                 }
             } else if (in.equals("3")) {
                 //TODO 群组功能待完善
-            } else {
+            } else if (in.equals("4")){
+                System.out.println(client.getOnlineUserList());
+            }
+
+            else {
                 System.out.println("Type in unknown message");
             }
             try {

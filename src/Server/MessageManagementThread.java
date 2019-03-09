@@ -11,14 +11,11 @@ import java.io.PrintWriter;
  */
 public class MessageManagementThread extends Thread {
     ServerThread serverThread;
-    BufferedReader in;
-    PrintWriter out;
 
+    public MessageManagementThread(ServerThread serverThread) {
 
-    public MessageManagementThread(ServerThread serverThread, BufferedReader in, PrintWriter out) {
         this.serverThread = serverThread;
-        this.in = in;
-        this.out = out;
+        System.out.println( serverThread.getUser() + "'s MessageManagementThread have been created%n");
         //TODO the start method should be called
         start();
     }
@@ -27,7 +24,7 @@ public class MessageManagementThread extends Thread {
     @Override
     public void run() {
         try {
-            String message = in.readLine();
+            String message = serverThread.getIn().readLine();
             System.out.println(message);
 //            out.println("send over Server.MessageManagementThread" + message);
 //            new PrintWriter(serverThread.getSocket().getOutputStream(), true).println("send over Server.MessageManagementThread" + message);
@@ -40,10 +37,14 @@ public class MessageManagementThread extends Thread {
                     System.out.println(message);
                     //TODO 完成群组聊天功能
                     System.out.println("Function haven't finish");
-                } else {
+                }else if (message.charAt(0) == '9'){
+                    serverThread.setActive(true);
+                    System.out.println("From MMT: Set Active True");
+                }
+                else {
                     System.out.println("***Unidentified Message***");
                 }
-                message = in.readLine();
+                message = serverThread.getIn().readLine();
             }
 
         } catch (IOException e) {

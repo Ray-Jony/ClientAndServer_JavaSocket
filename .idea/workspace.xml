@@ -2,26 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e812f3e-fb36-4d72-bd42-ba2be51165ae" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Server/SyncUserListThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ClientAndServer_JavaSocket/ServerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ClientAndServer_JavaSocket/ServerThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientInThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientInThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientInThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientLoginThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientLoginThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientLoginThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientOutThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientOutThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientOutThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClientUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Database/DBHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoginThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MessageManagementThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/MessageManagementThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MessageToAllThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/MessageToAllThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MessageToSingleThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/MessageToSingleThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OnlieUserList_In_Thread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/OnlieUserList_In_Thread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ServerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ClientAndServer_JavaSocket/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ClientAndServer_JavaSocket/ClientInThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ClientAndServer_JavaSocket/ClientLoginThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ClientAndServer_JavaSocket/ClientOutThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ClientAndServer_JavaSocket/ClientUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ClientAndServer_JavaSocket/DBHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ClientAndServer_JavaSocket/LoginThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ClientAndServer_JavaSocket/MessageManagementThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ClientAndServer_JavaSocket/MessageToAllThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ClientAndServer_JavaSocket/MessageToSingleThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ClientAndServer_JavaSocket/OnlieUserList_In_Thread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ClientAndServer_JavaSocket/Server.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ClientAndServer_JavaSocket/ServerThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/ClientInThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientInThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client/ClientOutThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client/ClientOutThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/MessageManagementThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/MessageManagementThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/OnlieUserList_In_Thread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ServerThread.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,7 +33,88 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/Server/SyncUserListThread.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="475">
+                  <caret line="25" column="52" lean-forward="true" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/Server/ServerThread.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="580">
+                  <caret line="101" column="47" lean-forward="true" selection-start-line="101" selection-start-column="47" selection-end-line="101" selection-end-column="47" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/Server/Server.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="741">
+                  <caret line="39" column="1" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="39" selection-end-column="1" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/Server/MessageManagementThread.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="529">
+                  <caret line="43" column="22" lean-forward="true" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/Client/Client.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1298">
+                  <caret line="145" column="5" lean-forward="true" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/Client/ClientInThread.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="522">
+                  <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/Client/ClientLoginThread.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="152">
+                  <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/Client/ClientOutThread.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="456">
+                  <caret line="24" selection-start-line="24" selection-end-line="24" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -67,8 +150,17 @@
         <option value="$PROJECT_DIR$/src/ClientOutThread.java" />
         <option value="$PROJECT_DIR$/src/Client.java" />
         <option value="$PROJECT_DIR$/src/DBHelper.java" />
-        <option value="$PROJECT_DIR$/src/Client/ClientInThread.java" />
         <option value="$PROJECT_DIR$/src/ServerThread.java" />
+        <option value="$PROJECT_DIR$/src/Server/OnlieUserList_In_Thread.java" />
+        <option value="$PROJECT_DIR$/src/Server/isActiveThread.java" />
+        <option value="$PROJECT_DIR$/src/Client/ClientOutThread.java" />
+        <option value="$PROJECT_DIR$/src/Server/Server.java" />
+        <option value="$PROJECT_DIR$/src/Client/Client.java" />
+        <option value="$PROJECT_DIR$/src/Server/isClientActiveThread.java" />
+        <option value="$PROJECT_DIR$/src/Server/SyncUserListThread.java" />
+        <option value="$PROJECT_DIR$/src/Server/ServerThread.java" />
+        <option value="$PROJECT_DIR$/src/Server/MessageManagementThread.java" />
+        <option value="$PROJECT_DIR$/src/Client/ClientInThread.java" />
       </list>
     </option>
   </component>
@@ -82,8 +174,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -95,6 +187,12 @@
               <item name="ClientAndServer_JavaSocket" type="b2602c69:ProjectViewProjectNode" />
               <item name="ClientAndServer_JavaSocket" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClientAndServer_JavaSocket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClientAndServer_JavaSocket" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ClientAndServer_JavaSocket" type="b2602c69:ProjectViewProjectNode" />
@@ -115,12 +213,12 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552085748641" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552142610370" />
     <property name="last_opened_file_path" value="C:/Program Files/Git/mingw64/bin/git.exe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -191,11 +289,23 @@
       <workItem from="1552069303355" duration="960000" />
       <workItem from="1552071363131" duration="1188000" />
       <workItem from="1552081956666" duration="1997000" />
+      <workItem from="1552085790245" duration="3344000" />
+      <workItem from="1552113216560" duration="3941000" />
+      <workItem from="1552117180000" duration="225000" />
+      <workItem from="1552117516924" duration="5817000" />
     </task>
+    <task id="LOCAL-00001" summary="利用package区分了Client和Server和Database">
+      <created>1552085915459</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1552085915459</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45862000" />
+    <option name="totallyTimeSpent" value="59189000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -209,7 +319,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.21302083" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21302083" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -280,6 +390,8 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Client_Server_JavaSocket" />
     </ignored-roots>
+    <MESSAGE value="利用package区分了Client和Server和Database" />
+    <option name="LAST_COMMIT_MESSAGE" value="利用package区分了Client和Server和Database" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$PROJECT_DIR$/../../jdk-11.0.2/lib/src.zip!/java.base/java/io/OutputStreamWriter.java" />
@@ -298,66 +410,12 @@
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client/ClientInThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LoginThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/ServerThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/MessageManagementThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database/DBHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LoginThread.java" />
+    <entry file="file://$PROJECT_DIR$/src/Database.java" />
     <entry file="file://$PROJECT_DIR$/src/Server/MessageToAllThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client/ClientUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -368,17 +426,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/OnlieUserList_In_Thread.java">
+    <entry file="file://$PROJECT_DIR$/src/Database/DBHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="741">
+          <caret line="39" column="27" lean-forward="true" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Server/Server.java">
+    <entry file="file://$PROJECT_DIR$/src/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="114">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/ClientUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/ClientOutThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
@@ -389,10 +461,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client/ClientOutThread.java">
+    <entry file="file://$PROJECT_DIR$/src/Client/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="1298">
+          <caret line="145" column="5" lean-forward="true" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="39" column="1" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="39" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/SyncUserListThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="25" column="52" lean-forward="true" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/ServerThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="101" column="47" lean-forward="true" selection-start-line="101" selection-start-column="47" selection-end-line="101" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client/ClientInThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Server/MessageManagementThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="43" column="22" lean-forward="true" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
         </state>
       </provider>
     </entry>
