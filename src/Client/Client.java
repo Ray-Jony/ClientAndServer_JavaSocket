@@ -11,28 +11,26 @@ import java.util.Scanner;
 
 public class Client {
 
-    private boolean ServerActive;
-
-
     private int flag;//if flag == 0 perform sendToUser else sendToGroup;
     private String user;
-    private Scanner scanner;
     private Socket socket;
     private BufferedReader in;
     private PrintWriter out;
     private List<String> onlineUserList;
     private boolean login;
-
+    private boolean ServerActive;
     private ClientUI clientUI;
-
+    ClientCheckServerActive sync;
+    ClientLoginThread clientLoginThread;
+    private String reloginInfo;
+    private ClientOutThread clientOutThread;
 
     public Client(String host, int port) throws IOException {
         this.onlineUserList = new ArrayList<>();
         this.login = false;
         this.clientUI = new ClientUI();
-
         this.socket = new Socket(host, port);
-        this.scanner = new Scanner(System.in);
+        this.ServerActive = true;
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.out = new PrintWriter(socket.getOutputStream(), true);
 
@@ -40,21 +38,22 @@ public class Client {
 
 
     public void start() {
-
+        sync = new ClientCheckServerActive(this);
+        new ClientInThread(this);
         login();
-
         while (true) {
             try {
                 Thread.sleep(500);
-                if (login)
+                if (login) {
+                    System.out.println("欢迎[" + this.user + "]，您已登入");
                     break;
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+        clientOutThread = new ClientOutThread(this);
 
-        new ClientInThread(this);
-        new ClientOutThread(this);
 
 
     }
@@ -64,16 +63,28 @@ public class Client {
 
         clientUI.getLoginButton().addActionListener(e -> {
 
-
             String username = clientUI.getUserText().getText();
             String password = clientUI.getPasswordText().getText();
             String loginInfo = username + "@" + password;
 
-            new ClientLoginThread(this, loginInfo);
+            clientLoginThread = new ClientLoginThread(this, loginInfo);
 
         });
 
     }
+    //TODO 添加注册模块
+
+    public void register(){
+        clientUI.getRegisterButton().addActionListener(e-> {
+
+        });
+    }
+
+
+
+
+
+
 
 
     public void sendToAll(String message) {
@@ -88,16 +99,16 @@ public class Client {
         out.println("2" + group + "@" + message);
     }
 
-    public void sendHearBeats(){
+    public void sendHearBeats() {
         out.println("9");
-    }
-
-    public Scanner getScanner() {
-        return scanner;
     }
 
     public Socket getSocket() {
         return socket;
+    }
+
+    public void setReloginInfo(String reloginInfo) {
+        this.reloginInfo = reloginInfo;
     }
 
     public BufferedReader getIn() {
@@ -124,6 +135,10 @@ public class Client {
         ServerActive = serverActive;
     }
 
+    public boolean isLogin() {
+        return login;
+    }
+
     public void setLogin(boolean login) {
         this.login = login;
     }
@@ -138,6 +153,15 @@ public class Client {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public ClientLoginThread getClientLoginThread() {
+        return clientLoginThread;
+    }
+
+
+    public ClientOutThread getClientOutThread() {
+        return clientOutThread;
     }
 
     public static void main(String[] args) throws IOException {

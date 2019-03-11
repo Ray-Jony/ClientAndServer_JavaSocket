@@ -15,7 +15,7 @@ public class MessageToAllThread extends Thread {
     public MessageToAllThread(ServerThread serverThread, String message) {
         this.message = message;
         this.serverThread = serverThread;
-        System.out.println("Server.MessageToAllThread - get: " + message);
+        System.out.println("群发线程启动，待转发消息： " + message.substring(2) + "%n");
         start();
     }
 
@@ -27,9 +27,9 @@ public class MessageToAllThread extends Thread {
             for (Socket s :
                     serverThread.getServer().getClients().values()) {
 //                System.out.println("Server.MessageToAllThread - Clients list" + s);
-                new PrintWriter(s.getOutputStream(),true).println(message);
+                new PrintWriter(s.getOutputStream(), true).println(message);
             }
-
+            System.out.println("群发消息完毕");
         } catch (IOException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();

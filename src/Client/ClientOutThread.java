@@ -1,51 +1,60 @@
 package Client;
 
+import java.util.Scanner;
+
 public class ClientOutThread extends Thread {
     private Client client;
+    private Scanner scanner;
 
     public ClientOutThread(Client client) {
         this.client = client;
-        System.out.println("Client.ClientOutThread Created");
+        System.out.println("[" + client.getUser() + "]的输出线程已启动");
+        this.scanner = new Scanner(System.in);
         start();
     }
 
     @Override
     public void run() {
-
-        while (true) {
-            System.out.println("Please chose what kind of message you want to send");
-            System.out.printf("1.send to all %n2.send to someone%n3.send to a group%n4.view online user list");
-            String in = client.getScanner().nextLine();
+        while (client.isServerActive()) {
+            System.out.println("请选择你想要发送什么类型的信息：");
+            System.out.printf("1.发给所有人 %n2.发给特定用户%n3.发给群聊%n4.查看当前在线用户");
+            String in = scanner.nextLine();
             if (in.equals("1")) {
-                System.out.println("Type in the message you want to send to All:");
-                String message = client.getScanner().nextLine();
-                client.sendToAll(message);
+                System.out.println("键入你想发送给所有人的信息:");
+                String message = scanner.nextLine();
+                if (message != null)
+                    client.sendToAll(message);
+                else System.out.println("消息不能为空！");
             } else if (in.equals("2")) {
-                System.out.println("who do you want to send to?");
+                System.out.println("你想要发给谁？");
                 System.out.println(client.getOnlineUserList());
-                String targetUser = client.getScanner().nextLine();
+                String targetUser = scanner.nextLine();
                 if (true) {//TODO 添加判断 targetUser是否在列表中。
-                    System.out.println("Type in the message you want to send to " + targetUser + ":");
-                    String message = client.getScanner().nextLine();
-                    client.sendToSingle(targetUser, message);
+                    System.out.println("键入你想发给[" + targetUser + "]的信息:");
+                    String message = scanner.nextLine();
+                    if (message != null)
+                        client.sendToSingle(targetUser, message);
+                    else System.out.println("消息不能为空！");
                 }
             } else if (in.equals("3")) {
                 //TODO 群组功能待完善
-            } else if (in.equals("4")){
+            } else if (in.equals("4")) {
                 System.out.println(client.getOnlineUserList());
-            }
-
-            else {
-                System.out.println("Type in unknown message");
+            } else {
+                System.out.println("键入的信息未知");
             }
             try {
                 Thread.sleep(1000);
-            }catch (InterruptedException e){
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
 
+        System.out.println("ClintOutThread已停止工作");
+
     }
 
-
+    public Scanner getScanner() {
+        return scanner;
+    }
 }

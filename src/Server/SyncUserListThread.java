@@ -16,19 +16,19 @@ public class SyncUserListThread extends Thread{
 
     @Override
     public void run() {
-        while (serverThread.isActive()){
-            StringBuilder userList = new StringBuilder("9");
-            for (String s : serverThread.getServer().getClients().keySet()) {
-                userList.append(s);
-                userList.append("@");
-            }
-            serverThread.setActive(false);
-            serverThread.getOut().println(userList);
-            try {
-                Thread.sleep(3*1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+//        while (serverThread.isClientActive()){
+//            StringBuilder userList = new StringBuilder("9");
+//            for (String s : serverThread.getServer().getClients().keySet()) {
+//                userList.append(s);
+//                userList.append("@");
+//            }
+//            serverThread.setClientActive(false);
+//            serverThread.getOut().println(userList);
+//            try {
+//                Thread.sleep(3*1000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 }
