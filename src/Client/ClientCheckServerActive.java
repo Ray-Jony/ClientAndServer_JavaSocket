@@ -16,9 +16,9 @@ public class ClientCheckServerActive extends Thread {
         while (tmpActive) {
             client.getOut().println("8");
             tmpActive = false;
-            System.out.println("检查服务器状态...");
+//            System.out.println("检查服务器状态...");
             try {
-                Thread.sleep(5 * 1000);
+                Thread.sleep(10 * 1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -26,6 +26,7 @@ public class ClientCheckServerActive extends Thread {
         }
         System.out.println("与服务器的连接已断开");
         client.setServerActive(false);
+        System.out.println("输入任意内容以结束");
         try {
             Thread.sleep(3*1000);
         } catch (InterruptedException e) {

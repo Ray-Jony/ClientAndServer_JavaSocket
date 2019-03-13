@@ -29,23 +29,26 @@ public class MessageManagementThread extends Thread {
                 System.out.println("Server收到来自" + serverThread.getUser() + "消息：" + message);
                 char Indicator = message.charAt(0);
                 if (Indicator == '0') {
-                    System.out.println("消息类型为：群发");
+                    System.out.println("消息类型为：全体聊天");
                     new MessageToAllThread(serverThread, message);
                 } else if (Indicator == '1') {
                     System.out.println("消息类型为：私聊");
                     new MessageToSingleThread(serverThread, message);
+                } else if (Indicator == '2') {
+                    System.out.println("消息类型为：群聊");//21message;
+                    new MessageToGroupThread(serverThread, message);
                 } else if (Indicator == '3') {
-                    System.out.println(message);
-                    //TODO 完成群组聊天功能
-                    System.out.println("Function haven't finish");
+                    //3GroupName@Apple@Microsoft@
+                    System.out.println("消息类型为：创建群聊请求");
+                    new MessageCrateGroupThread(serverThread, message);
                 } else if (Indicator == '9') {
-                    System.out.println("消息类型为：客户端心跳包");
+//                    System.out.println("消息类型为：客户端心跳包");
                     serverThread.setTmpActive(true);
-                    System.out.println("设置Client为Active");
+//                    System.out.println("设置Client为Active");
                 } else if (Indicator == '8') {
-                    System.out.println("消息类型为：检查服务器状态");
+//                    System.out.println("消息类型为：检查服务器状态");
                     serverThread.getOut().println("8");
-                    System.out.println("服务器心跳包已发送");
+//                    System.out.println("服务器心跳包已发送");
 
                 } else {
                     System.out.println("***Unidentified Message Received***");
@@ -61,3 +64,4 @@ public class MessageManagementThread extends Thread {
 
     }
 }
+//发消息是不是也要集中？

@@ -6,8 +6,8 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
-import java.util.Scanner;
 
 public class Client {
 
@@ -18,28 +18,29 @@ public class Client {
     private PrintWriter out;
     private List<String> onlineUserList;
     private boolean login;
-    private boolean ServerActive;
+    private boolean serverActive;
     private ClientUI clientUI;
-    ClientCheckServerActive sync;
-    ClientLoginThread clientLoginThread;
+    private ClientCheckServerActive sync;
+    private ClientLoginThread clientLoginThread;
     private String reloginInfo;
-    private ClientOutThread clientOutThread;
+    private ClientMessageOutThread clientMessageOutThread;
+    private Hashtable<Integer, List<String>> JoinedGroups;
 
     public Client(String host, int port) throws IOException {
         this.onlineUserList = new ArrayList<>();
         this.login = false;
         this.clientUI = new ClientUI();
         this.socket = new Socket(host, port);
-        this.ServerActive = true;
+        this.serverActive = true;
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.out = new PrintWriter(socket.getOutputStream(), true);
-
+        this.JoinedGroups = new Hashtable<>();
     }
 
 
     public void start() {
         sync = new ClientCheckServerActive(this);
-        new ClientInThread(this);
+        new ClientMessageInThread(this);
         login();
         while (true) {
             try {
@@ -52,8 +53,7 @@ public class Client {
                 e.printStackTrace();
             }
         }
-        clientOutThread = new ClientOutThread(this);
-
+        clientMessageOutThread = new ClientMessageOutThread(this);
 
 
     }
@@ -74,18 +74,15 @@ public class Client {
     }
     //TODO 添加注册模块
 
-    public void register(){
-        clientUI.getRegisterButton().addActionListener(e-> {
+    public void register() {
+        clientUI.getRegisterButton().addActionListener(e -> {
 
         });
     }
 
-
-
-
-
-
-
+    public Hashtable<Integer, List<String>> getJoinedGroups() {
+        return JoinedGroups;
+    }
 
     public void sendToAll(String message) {
         out.println("0" + "@" + message);
@@ -97,6 +94,16 @@ public class Client {
 
     public void sendToGroup(int group, String message) {//TODO define Group indicator
         out.println("2" + group + "@" + message);
+    }
+
+    public void sendGroupCreationRequest(List<String> targetUser){//3GroupName@Apple@Microsoft@
+        StringBuilder groupInfo = new StringBuilder();
+        for (String u :
+                targetUser) {
+            groupInfo.append(u);
+            groupInfo.append("@");
+        }
+        out.println("3" + groupInfo);
     }
 
     public void sendHearBeats() {
@@ -128,11 +135,11 @@ public class Client {
     }
 
     public boolean isServerActive() {
-        return ServerActive;
+        return serverActive;
     }
 
     public void setServerActive(boolean serverActive) {
-        ServerActive = serverActive;
+        this.serverActive = serverActive;
     }
 
     public boolean isLogin() {
@@ -159,9 +166,12 @@ public class Client {
         return clientLoginThread;
     }
 
+    public ClientCheckServerActive getSync() {
+        return sync;
+    }
 
-    public ClientOutThread getClientOutThread() {
-        return clientOutThread;
+    public ClientMessageOutThread getClientMessageOutThread() {
+        return clientMessageOutThread;
     }
 
     public static void main(String[] args) throws IOException {

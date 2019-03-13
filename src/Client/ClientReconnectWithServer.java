@@ -1,9 +1,9 @@
 package Client;
 
-public class reconnectWithServer extends Thread {
+public class ClientReconnectWithServer extends Thread {
     private Client client;
 
-    public reconnectWithServer(Client client) {
+    public ClientReconnectWithServer(Client client) {
         this.client = client;
     }
 
