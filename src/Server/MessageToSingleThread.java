@@ -23,15 +23,16 @@ public class MessageToSingleThread extends Thread {
     public void run() {
 
         //TODO 检查user是否在线（是否存在于HashTable clients中）
-        Socket userSocket = serverThread.getServer().getClients().get(targetUser);
+//        Socket userSocket = serverThread.getServer().getClients().get(targetUser);
         message = message.substring(message.indexOf("@") + 1);
-        try {
+//        try {
             message = "3" + serverThread.getUser() + "@" + message;
-            new PrintWriter(userSocket.getOutputStream(), true).println(message);
+            serverThread.getServer().sendMessage(targetUser,message);
+//            new PrintWriter(userSocket.getOutputStream(), true).println(message);
             System.out.println("私聊消息已发送");
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
+//        } catch (IOException e) {
+//            System.out.println(e.getMessage());
+//            e.printStackTrace();
+//        }
     }
 }

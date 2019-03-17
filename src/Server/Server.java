@@ -12,6 +12,7 @@ public class Server {
     public ServerSocket ss;
     public Hashtable<String, Socket> clients = new Hashtable<>();
     public Hashtable<Integer, List<String>> groups = new Hashtable<>(); // note that the first String of the groups store the group name;
+    public Hashtable<String, PrintWriter> clientsOut = new Hashtable<>();
     public int groupId;
 //   final int TIMOUT = 3600; Set a timer to close the server when there is no connection
 
@@ -19,6 +20,7 @@ public class Server {
         this.port = port;
         ss = new ServerSocket(port);
         System.out.println("服务器已搭建，端口号：" + port);
+
     }
 
     public void start() throws IOException {
@@ -31,6 +33,12 @@ public class Server {
             Socket socket = ss.accept();
             new ServerThread(this, socket);
         }
+    }
+
+    public void sendMessage(String user, String message){
+        if (clients.keySet().contains(user))
+            clientsOut.get(user).println(message);
+        else System.out.println(user + "不在列表中");
     }
 
     public Hashtable<String, Socket> getClients() {

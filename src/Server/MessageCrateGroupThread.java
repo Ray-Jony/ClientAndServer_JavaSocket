@@ -44,17 +44,18 @@ public class MessageCrateGroupThread extends Thread {
         System.out.println("已更新群组列表：" + serverThread.getServer().getGroups());
         String createGroupMessage = 5 + serverThread.getUser() + "@" + groupID + "@" + groupName + "@" + message + serverThread.getUser() + "@";
         System.out.println("createGroupMessage: " + createGroupMessage);
-        try {
-            int count = 0;
-            for (String user :
-                    groupInfo) {
-                count++;
-                if (count == 1)
-                    continue;
-                new PrintWriter(serverThread.getServer().getClients().get(user).getOutputStream(), true).println(createGroupMessage);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+//        try {
+        int count = 0;
+        for (String user :
+                groupInfo) {
+            count++;
+            if (count == 1)
+                continue;
+//            serverThread.getServer().clientsOut.get(user).println(createGroupMessage);
+            serverThread.getServer().sendMessage(user, createGroupMessage);
         }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 }

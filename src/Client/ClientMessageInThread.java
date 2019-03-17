@@ -1,12 +1,18 @@
 package Client;
 
+import java.text.SimpleDateFormat;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 
 public class ClientMessageInThread extends Thread {
+
     private Client client;
+
+    private final int USER_LIST_LISTENER = 1;
+    private final int MESSAGE_LISTENER = 2;
 
     public ClientMessageInThread(Client client) {
         this.client = client;
@@ -16,7 +22,6 @@ public class ClientMessageInThread extends Thread {
 
     @Override
     public void run() {
-        //思考：每个socket都有一个独特的outputStream 所以需要新的判断，来分配readline的内容, 避免调用outputStream
         try {
 
             String message;
@@ -31,11 +36,11 @@ public class ClientMessageInThread extends Thread {
 
                     if (Indicator == '0') {
 
-                        client.getClientLoginThread().setPermission("0");
+                        client.getClientLogin().setPermission("0");
 
                     } else if (Indicator == '1') {
 
-                        client.getClientLoginThread().setPermission("1");
+                        client.getClientLogin().setPermission("1");
 
                     } else if (Indicator == '9') {
 
@@ -59,11 +64,17 @@ public class ClientMessageInThread extends Thread {
 
                         System.out.println("消息类型为：接收到的群发消息");
                         System.out.println("[ALL] " + sender + ": " + realMessage);
+                        ActionTrigger(MESSAGE_LISTENER);
+                        String messageLog = getTime() + "\n[" + sender + "]\n" + realMessage;
+                        client.recordPublicMessageLog(messageLog);
 
                     } else if (Indicator == '3') {
 
                         System.out.println("消息类型为：接收到的私聊消息");
                         System.out.println("[Private] " + sender + ": " + realMessage);
+                        ActionTrigger(MESSAGE_LISTENER);
+                        String messageLog = getTime() + "\n[" + sender + "]\n" + realMessage;
+                        client.recordSingleMessageLog(sender, messageLog);
 
                     } else if (Indicator == '4') {
 
@@ -72,6 +83,10 @@ public class ClientMessageInThread extends Thread {
                         int groupID = Integer.parseInt(realMessage.substring(0, realMessage.indexOf("@")));
                         realMessage = realMessage.substring(realMessage.indexOf("@") + 1);
                         System.out.println("[Group][" + client.getJoinedGroups().get(groupID).get(0) + "]:" + realMessage);
+                        ActionTrigger(MESSAGE_LISTENER);
+                        String messageLog = getTime() + "\n[" + sender + "]\n" + realMessage;
+                        client.recordGroupMessageLog(groupID, messageLog);
+
 
                     } else if (Indicator == '5') {
                         //groupID + "@" + groupName + "@" + message + serverThread.getUser() + "@"
@@ -86,10 +101,12 @@ public class ClientMessageInThread extends Thread {
                             groupInfo.add(realMessage.substring(0, realMessage.indexOf("@")));
                             realMessage = realMessage.substring(realMessage.indexOf("@") + 1);
                         }
-                        client.getJoinedGroups().put(groupID,groupInfo);
+                        client.getJoinedGroups().put(groupID, groupInfo);
                         System.out.println("用户列表更新完毕：\n" + client.getJoinedGroups().get(groupID));
-                        System.out.println("您已被" + sender + "邀请加入群聊[" + groupInfo.get(0) +"]\n" +
+                        System.out.println("您已被" + sender + "邀请加入群聊[" + groupInfo.get(0) + "]\n" +
                                 "群成员：" + groupInfo);
+                        ActionTrigger(USER_LIST_LISTENER);
+
                     } else if (Indicator == '8') {
 
                         System.out.println("消息类型为：接收到的用户列表");
@@ -101,6 +118,7 @@ public class ClientMessageInThread extends Thread {
                         }
                         client.setOnlineUserList(onlineUserList);
                         System.out.println("已更新用户列表为：" + client.getOnlineUserList());
+                        ActionTrigger(USER_LIST_LISTENER);
                         client.setServerActive(true);
 
                     } else {
@@ -120,4 +138,25 @@ public class ClientMessageInThread extends Thread {
             e.printStackTrace();
         }
     }
+
+    public void ActionTrigger(int i) {
+        if (i == MESSAGE_LISTENER)
+            for (MessageListener messageListener : client.messageListeners) {
+                messageListener.getNewMessage();
+            }
+        if (i == USER_LIST_LISTENER)
+            for (UserListListener userListListener : client.userListUserListListeners) {
+                userListListener.UserListChange();
+            }
+    }
+
+    private String getTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat();// 格式化时间
+        sdf.applyPattern("yyyy-MM-dd HH:mm:ss a");// a为am/pm的标记
+        Date date = new Date();// 获取当前时间
+        System.out.println("现在时间：" + sdf.format(date)); // 输出已经格式化的现在时间（24小时制）
+        return sdf.format(date);
+    }
 }
+
+//思考：每个socket都有一个独特的outputStream 所以需要新的判断，来分配readline的内容, 避免调用多次outputStream，保证线程安全。

@@ -71,6 +71,7 @@ public class ServerThread extends Thread {
              * */
             //绑定用户的用户名和通讯Socket， 储存在服务器
             server.clients.put(username, socket);
+            server.clientsOut.put(username, out);
             System.out.println("用户：" + username + "已储存到服务列表");
             sendUserList();
 
@@ -135,6 +136,10 @@ public class ServerThread extends Thread {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    public void sendToClient(String message){
+        out.println(message);
     }
 
 

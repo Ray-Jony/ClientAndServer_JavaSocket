@@ -29,18 +29,19 @@ public class MessageToGroupThread extends Thread {
         System.out.println("groupUsers: " + groupUsers);
         String groupMessage = 4 + serverThread.getUser() + "@" + targetGroup + "@" + message;
         System.out.println("groupMessage: " + groupMessage);
-        try {
+//        try {
             int count = 0;
             for (String user :
                     groupUsers) {
                 count++;
                 if (count == 1)
                     continue;
-                new PrintWriter(serverThread.getServer().getClients().get(user).getOutputStream(), true).println(groupMessage);
+                serverThread.getServer().sendMessage(user,message);
+//                new PrintWriter(serverThread.getServer().getClients().get(user).getOutputStream(), true).println(groupMessage);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 }
 

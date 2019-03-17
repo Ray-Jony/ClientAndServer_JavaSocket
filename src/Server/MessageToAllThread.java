@@ -23,16 +23,17 @@ public class MessageToAllThread extends Thread {
     public void run() {
         //简洁的标志有助于提升传输速度
         message = "2" + serverThread.getUser() + "@" + message.substring(2);
-        try {
-            for (Socket s :
-                    serverThread.getServer().getClients().values()) {
+//        try {
+        for (String user :
+                serverThread.getServer().getClients().keySet()) {
 //                System.out.println("Server.MessageToAllThread - Clients list" + s);
-                new PrintWriter(s.getOutputStream(), true).println(message);
-            }
-            System.out.println("群发消息完毕");
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
+//                new PrintWriter(s.getOutputStream(), true).println(message);
+            serverThread.getServer().sendMessage(user, message);
         }
+        System.out.println("群发消息完毕");
+//        } catch (IOException e) {
+//            System.out.println(e.getMessage());
+//            e.printStackTrace();
+//        }
     }
 }

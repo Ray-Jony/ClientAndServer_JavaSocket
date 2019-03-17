@@ -1,26 +1,22 @@
 package Client;
 
-import java.io.IOException;
-
 /**
  * @author :
  * @version :
  */
-public class ClientLoginThread extends Thread {
+public class ClientLogin {
     Client client;
     String loginInfo;
     String permission;
 
-    public ClientLoginThread(Client client, String loginInfo) {
+    public ClientLogin(Client client) {
         this.client = client;
-        this.loginInfo = loginInfo;
+        this.loginInfo = null;
         this.permission = "None";
-        start();
-        System.out.println("登录线程已启动");
     }
 
-    @Override
-    public void run() {
+
+    public void start() {
 
         client.getOut().println(loginInfo);
 
@@ -42,19 +38,24 @@ public class ClientLoginThread extends Thread {
         }
 
         if (permission.equals("1")) {
-            client.getClientUI().successfulLogin();
+//            client.getClientUI().successfulLogin();
+            System.out.println("成功登陆");
             client.setUser(loginInfo.substring(0, loginInfo.indexOf("@")));
             client.setLogin(true);
-            client.setReloginInfo(loginInfo);
-            client.getClientUI().getFrame().dispose();
+            client.setReLoginInfo(loginInfo);
+//            client.getClientUI().getFrame().dispose();
 
         } else {
-            client.getClientUI().loginFailed();
+//            client.getClientUI().loginFailed();
         }
 
     }
 
     public void setPermission(String permission) {
         this.permission = permission;
+    }
+
+    public void setLoginInfo(String loginInfo) {
+        this.loginInfo = loginInfo;
     }
 }

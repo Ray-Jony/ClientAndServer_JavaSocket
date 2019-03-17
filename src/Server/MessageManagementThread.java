@@ -26,7 +26,7 @@ public class MessageManagementThread extends Thread {
 //            out.println("send over Server.MessageManagementThread" + message);
 //            new PrintWriter(serverThread.getSocket().getOutputStream(), true).println("send over Server.MessageManagementThread" + message);
             while (message != null) {
-                System.out.println("Server收到来自" + serverThread.getUser() + "消息：" + message);
+//                System.out.println("Server收到来自" + serverThread.getUser() + "消息：" + message);
                 char Indicator = message.charAt(0);
                 if (Indicator == '0') {
                     System.out.println("消息类型为：全体聊天");
